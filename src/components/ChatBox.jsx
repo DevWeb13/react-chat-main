@@ -4,11 +4,13 @@ import Message from "./Message";
 import SendMessage from "./SendMessage";
 
 const ChatBox = () => {
-  const [messages, setMessages] = useState([]);
-  const scroll = useRef();
+  const [messages, setMessages] = useState([{
+    id: null,
+  }]);
+  const scroll = useRef(null);
 
   useEffect(() => {
-    return displayMessage(setMessages);
+    displayMessage(setMessages);
   }, []);
 
   return (

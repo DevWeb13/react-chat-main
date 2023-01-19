@@ -13,7 +13,6 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
  * text, name, avatar, createdAt, and uid. It then
  */
 export default function settingsSendMessage(message, setMessage, scroll) {
-  console.error({ scroll })
   return async (event) => {
     event.preventDefault();
     if (message.trim() === "") {

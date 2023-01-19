@@ -1,20 +1,16 @@
 import React from "react";
-import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { auth } from "../firebase";
 import GoogleSignin from "../img/btn_google_signin_dark_pressed_web.png";
+import { authSignInWithRedirect, authSignOut } from "../utils/sign";
+
 
 const NavBar = () => {
-  const [user] = useAuthState(auth);
+const [user] = useAuthState(auth);
 
-  const googleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider);
-  };
+  const googleSignIn = authSignInWithRedirect();
 
-  const signOut = () => {
-    auth.signOut();
-  };
+  const signOut = authSignOut();
 
   return (
     <nav className="nav-bar">
@@ -37,3 +33,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
