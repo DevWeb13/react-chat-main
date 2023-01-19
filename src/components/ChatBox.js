@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   query,
   collection,
@@ -12,6 +12,7 @@ import SendMessage from "./SendMessage";
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
+  const scroll = useRef();
 
   useEffect(() => {
     const q = query(
@@ -36,7 +37,9 @@ const ChatBox = () => {
           <Message key={message.id} message={message} />
         ))}
       </div>
-      <SendMessage />
+      {/* when a new message enters the chat, the screen scrolls dowwn to the scroll div */}
+      <span ref={scroll}></span>
+      <SendMessage scroll={scroll} />
     </main>
   );
 };
